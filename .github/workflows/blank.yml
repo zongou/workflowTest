@@ -1,36 +1,105 @@
-# This is a basic workflow to help you get started with Actions
+name: Auto Build Termux App
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    branches:
+      - master
+  push:
+    branches:
+      - master
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+    - name: Clone repository
+      run: git clone -b v0.117 https://github.com/termux/termux-app
+    - name: Modify
+      run: |
+        ###
+        cd termux-app
+        rep(){ sed -i "s/$1/$2/g" $3 ;}
+        
+        # build arm64-v8a only
+        rep "abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'" "abiFilters 'arm64-v8a'" app/build.gradle
+        
+        # chage extra key layout
+        rep "\\[\\['ESC','\\/',{key: '-', popup: '|'},'HOME','UP','END','PGUP'\\], \\['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN'\\]\\]" \
+        "\\[\\[{key: '~',popup: '\\\`'}, {key: '\\\\\\\\\\/', popup: '?'}, {key: ':', popup: ';'}, {key: '!', popup: {macro: 'ESC :!', display: '!cmd'}}, {key: '-', popup: '_'}, {key: '=', popup: '+'}, {key: 'UP', popup: 'PGUP'}, {key: 'KEYBOARD', popup: {macro: 'exit ENTER', display: 'exit'}}],[{key: 'ESC', popup: {macro: 'ESC :q ENTER', display: 'quit'}}, {key: 'TAB', popup: {macro: 'ESC :w ENTER', display: 'save'}}, {key: 'CTRL', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}, {key: 'ALT', popup: '*'}, {key: 'BACKSLASH', popup: '|'}, {key: 'LEFT', popup: 'HOME'}, {key: 'DOWN', popup: 'PGDN'}, {key: 'RIGHT', popup: 'END'}\\]\\]" \
+        termux-shared/src/main/java/com/termux/shared/settings/properties/TermuxPropertyConstants.java
+        
+        # use lessKnownCharacterDisplay and arrowTriangleVariationDisplay
+        sed -i '163 i putAll(lessKnownCharactersDisplay);' app/src/main/java/com/termux/app/terminal/io/extrakeys/ExtraKeysInfo.java
+        sed -i '163 i putAll(arrowTriangleVariationDisplay);' app/src/main/java/com/termux/app/terminal/io/extrakeys/ExtraKeysInfo.java
+        
+        # remove settingsButtonView
+        sed -i "507asettingsButton.setVisibility(View.GONE);" app/src/main/java/com/termux/app/TermuxActivity.java
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+    - name: Build
+      run: |
+        cd termux-app
+        ./gradlew assembleDebug
+
+    - name: Copy and rename files
+      run: |
+        remote_version=$(cat termux-app/app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
+        echo "lastest version: $remote_version"
+        cd termux-app/app/build/outputs/apk/debug
+        for var in $(ls)
+        do
+          if [ ${var##*.} == "apk" ];then
+             mv -f "$var" $(echo "$var"|sed 's/app/termux-app/' |sed 's/-debug/'_${remote_version}/)
+          fi
+        done
+        
+        for var in universal arm64-v8a armeabi-v7a x86_64 x86
+          do mkdir -p $var && mv *$var*.apk $var
+        done
+
+#     - name: Store generated APK file
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: termux-app
+#         path: ./termux-app/app/build/outputs/apk/debug
+# #         path: ./termux-app/termux-shared/src/main/java/com/termux/shared/settings/properties/TermuxPropertyConstants.java     # debug
+
+    - name: Store generated universal APK file
+      uses: actions/upload-artifact@v2
+      with:
+        name: termux-app-universal
+        path: |
+            ./termux-app/app/build/outputs/apk/debug/universal
+            ./termux-app/app/build/outputs/apk/debug/output-metadata.json
+    - name: Store generated arm64-v8a APK file
+      uses: actions/upload-artifact@v2
+      with:
+        name: termux-app-arm64-v8a
+        path: |
+          ./termux-app/app/build/outputs/apk/debug/arm64-v8a
+          ./termux-app/app/build/outputs/apk/debug/output-metadata.json
+    - name: Store generated armeabi-v7a APK file
+      uses: actions/upload-artifact@v2
+      with:
+        name: termux-app-armeabi-v7a
+        path: |
+          ./termux-app/app/build/outputs/apk/debug/armeabi-v7a
+          ./termux-app/app/build/outputs/apk/debug/output-metadata.json
+    - name: Store generated x86_64 APK file
+      uses: actions/upload-artifact@v2
+      with:
+        name: termux-app-x86_64
+        path: |
+          ./termux-app/app/build/outputs/apk/debug/x86_64
+          ./termux-app/app/build/outputs/apk/debug/output-metadata.json
+    - name: Store generated x86 APK file
+      uses: actions/upload-artifact@v2
+      with:
+        name: termux-app-x86
+        path: |
+          ./termux-app/app/build/outputs/apk/debug/x86
+          ./termux-app/app/build/outputs/apk/debug/output-metadata.json
+#     - name: Upload Apk to WeTransfer
+#       run: |
+#         cd termux-app
+#          curl -sL https://git.io/file-transfer | sh
+#         ./transfer wet ./app/build/outputs/apk/debug/*.apk
