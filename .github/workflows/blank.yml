@@ -35,9 +35,9 @@ jobs:
         sed -i "507asettingsButton.setVisibility(View.GONE);" app/src/main/java/com/termux/app/TermuxActivity.java
 
         # change core version
-        sed -i 162,166d build.gradle
+        sed -i 162,166d app/build.gradle
         addLine(){
-            sed -i "162a$1" build.gradle
+            sed -i "162a$1" app/build.gradle
         }
         addLine 'downloadBootstrap("x86_64",  "1d80e2613fd35b14d5a0fb8da5b41b38208a1a40fb727bbdb9a8996793bd973e", version)'
         addLine 'downloadBootstrap("i686",    "1c60ce2c68e2a47328686e492b8bc0b3a2a0e0536c6f2894cb4c48ecf1fd3e9e", version)'
