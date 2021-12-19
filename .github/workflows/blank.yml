@@ -43,7 +43,7 @@ jobs:
         addLine 'downloadBootstrap("arm",     "86f1c71e569fc425ac0da1035e8a7aa6aa867dc3b36648484c7233d40ebfc87d", version)'
         addLine 'downloadBootstrap("i686",    "059de4f0dd1df53c81b03f4c1c7e6b3f593b428a14359bb9149445169b4490f7", version)'
         addLine 'downloadBootstrap("x86_64",  "09dbd39c83ddbb2d4e37a8a7233760edfeafb3f122baa14b64665b4658f2ff11", version)'
-        addLine 'def version = "2021.12.12-r1"'
+        addLine 'def version = "2021.12.19-r1"'
 
     - name: Build
       run: |
