@@ -29,8 +29,8 @@ jobs:
         termux-shared/src/main/java/com/termux/shared/settings/properties/TermuxPropertyConstants.java
         
         # use lessKnownCharacterDisplay and arrowTriangleVariationDisplay
-        sed -i '163 i putAll(lessKnownCharactersDisplay);' app/src/main/java/com/termux/app/terminal/io/extrakeys/ExtraKeysInfo.java
-        sed -i '163 i putAll(arrowTriangleVariationDisplay);' app/src/main/java/com/termux/app/terminal/io/extrakeys/ExtraKeysInfo.java
+        sed -i '163 i putAll(lessKnownCharactersDisplay);' termux-shared/src/main/java/com/termux/shared/terminal/io/extrakeys/ExtraKeysConstants.java
+        sed -i '163 i putAll(arrowTriangleVariationDisplay);' termux-shared/src/main/java/com/termux/shared/terminal/io/extrakeys/ExtraKeysConstants.java
         
         # remove settingsButtonView
         sed -i "507asettingsButton.setVisibility(View.GONE);" app/src/main/java/com/termux/app/TermuxActivity.java
