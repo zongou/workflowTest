@@ -23,7 +23,7 @@ jobs:
         rep "abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'" "abiFilters 'arm64-v8a'" app/build.gradle
         
         # chage extra key layout
-        ls
+        tree termux-shared
         rep "\\[\\['ESC','\\/',{key: '-', popup: '|'},'HOME','UP','END','PGUP'\\], \\['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN'\\]\\]" \
         "\\[\\[{key: '~',popup: '\\\`'}, {key: '\\\\\\\\\\/', popup: '?'}, {key: ':', popup: ';'}, {key: '!', popup: {macro: 'ESC :!', display: '!cmd'}}, {key: '-', popup: '_'}, {key: '=', popup: '+'}, {key: 'UP', popup: 'PGUP'}, {key: 'KEYBOARD', popup: {macro: 'exit ENTER', display: 'exit'}}],[{key: 'ESC', popup: {macro: 'ESC :q ENTER', display: 'quit'}}, {key: 'TAB', popup: {macro: 'ESC :w ENTER', display: 'save'}}, {key: 'CTRL', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}, {key: 'ALT', popup: '*'}, {key: 'BACKSLASH', popup: '|'}, {key: 'LEFT', popup: 'HOME'}, {key: 'DOWN', popup: 'PGDN'}, {key: 'RIGHT', popup: 'END'}\\]\\]" \
         termux-shared/src/main/java/com/termux/shared/settings/properties/TermuxPropertyConstants.java
