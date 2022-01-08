@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clone repository
-      run: git clone -b v0.118 https://github.com/termux/termux-app
+      run: git clone -b v0.118.0 https://github.com/termux/termux-app
     - name: Modify
       run: |
         ###
