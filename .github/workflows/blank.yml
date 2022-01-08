@@ -39,10 +39,10 @@ jobs:
         addLine(){
             sed -i "162a$1" app/build.gradle
         }
-        addLine 'downloadBootstrap("aarch64", "5c4831fd88682ea323cdf8200d6bdd5c922152ce610d7a92d67310ca33b536d8", version)'
-        addLine 'downloadBootstrap("arm",     "7b593cd229c7462ff94975610115f332b79f7fbbeb7063424ef3aad26e0bdac0", version)'
-        addLine 'downloadBootstrap("i686",    "f1f55c9b11fdccf1fc4d31238fb1dcd48df5e9879b75c107ed3c115da7f97dfa", version)'
-        addLine 'downloadBootstrap("x86_64",  "4e6f417b9bf755a9089d8d4f2f289a937ae95442167abc30c2fbba4ad52c917f", version)'
+        addLine 'downloadBootstrap("aarch64", "0fe6d0159d12fcb8baf7750ce9072b9b36f742662b02ad4da145ab85873614cd", version)'
+        addLine 'downloadBootstrap("arm",     "0a6014e2ec3b7079524fee3caabd02be05bcb4add3c6cd9e5ad98408b428c717", version)'
+        addLine 'downloadBootstrap("i686",    "c55369a9af1316dc3d99457aa23cce64b29c1e60e375159352c0d4b9cfed4ac6", version)'
+        addLine 'downloadBootstrap("x86_64",  "e93a7c66d15edb7d1b5ceca906255c85ead35a8b6a52f93524e117cfb07e6778", version)'
         addLine 'def version = "2021.12.26-r1"'
 
     - name: Build
