@@ -32,7 +32,7 @@ jobs:
         sed -i '163 i putAll(ARROW_TRIANGLE_VARIATION_DISPLAY);' termux-shared/src/main/java/com/termux/shared/terminal/io/extrakeys/ExtraKeysConstants.java
         
         # remove settingsButtonView
-        sed -i "507asettingsButton.setVisibility(View.GONE);" app/src/main/java/com/termux/app/TermuxActivity.java
+        sed -i "523asettingsButton.setVisibility(View.GONE);" app/src/main/java/com/termux/app/TermuxActivity.java
 
         # change core version
         # sed -i 162,166d app/build.gradle
