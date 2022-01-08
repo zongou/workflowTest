@@ -39,8 +39,8 @@ jobs:
         addLine(){
             sed -i "162a$1" app/build.gradle
         }
-        addLine 'downloadBootstrap("aarch64", "0fe6d0159d12fcb8baf7750ce9072b9b36f742662b02ad4da145ab85873614cd", version)'
-        addLine 'downloadBootstrap("arm",     "0a6014e2ec3b7079524fee3caabd02be05bcb4add3c6cd9e5ad98408b428c717", version)'
+        addLine 'downloadBootstrap("aarch64", "fe6d0159d12fcb8baf7750ce9072b9b36f742662b02ad4da145ab85873614cd", version)'
+        addLine 'downloadBootstrap("arm",     "a6014e2ec3b7079524fee3caabd02be05bcb4add3c6cd9e5ad98408b428c717", version)'
         addLine 'downloadBootstrap("i686",    "c55369a9af1316dc3d99457aa23cce64b29c1e60e375159352c0d4b9cfed4ac6", version)'
         addLine 'downloadBootstrap("x86_64",  "e93a7c66d15edb7d1b5ceca906255c85ead35a8b6a52f93524e117cfb07e6778", version)'
         addLine 'def version = "2022.01.07-r1"'
