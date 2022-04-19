@@ -22,8 +22,24 @@ jobs:
         
         # chage extra key layout
         rep "\\[\\['ESC','\\/',{key: '-', popup: '|'},'HOME','UP','END','PGUP'\\], \\['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN'\\]\\]" \
-                "\\[\\[{key: 'esc', popup: {macro: 'ESC :q ENTER', display: 'quit'}}, {key: '~',popup: '\\\`'}, {key: '\\\\\\\\\\/', popup: '?'}, {key: ':', popup: ';'}, {key: '!', popup: {macro: 'ESC :!', display: '!cmd'}}, {key: '=', popup: '+'}, {key: 'UP', popup: 'PGUP'}, {key: 'BACKSLASH', popup: '|'}]\
-                ,[{key: 'ctrl', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}, {key: 'tab', popup: {macro: 'ESC :w ENTER', display: 'save'}}, {key: 'alt', popup: '*'}, {key: 'KEYBOARD', popup: {macro: 'CTRL d', display: 'exit'}}, {key: '-', popup: '_'}, {key: 'LEFT', popup: 'HOME'}, {key: 'DOWN', popup: 'PGDN'}, {key: 'RIGHT', popup: 'END'}\\]\\]" \
+                "\\[\\[\
+                {macro: 'ESC', display: 'esc', popup: {macro: 'ESC :q ENTER', display: 'quit'}}\
+                , {key: '~',popup: '\\\`'}\
+                , {key: '\\\\\\\\\\/', popup: '?'}\
+                , {key: ':', popup: ';'}\
+                , {key: '!', popup: {macro: 'ESC :!', display: '!cmd'}}\
+                , {key: '=', popup: '+'}\
+                , {key: 'UP', popup: 'PGUP'}\
+                , {key: 'BACKSLASH', popup: '|'}]\
+                ,[\
+                {macro: 'CTRL', display: 'ctrl', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}\
+                , {macro: 'TAB', display: 'tab', popup: {macro: 'ESC :w ENTER', display: 'save'}}\
+                , {macro: 'ALT', display: 'alt', popup: '*'}\
+                , {key: 'KEYBOARD', popup: {macro: 'CTRL d', display: 'exit'}}\
+                , {key: '-', popup: '_'}\
+                , {key: 'LEFT', popup: 'HOME'}\
+                , {key: 'DOWN', popup: 'PGDN'}\
+                , {key: 'RIGHT', popup: 'END'}\\]\\]" \
         termux-shared/src/main/java/com/termux/shared/settings/properties/TermuxPropertyConstants.java
         
         # use lessKnownCharacterDisplay and arrowTriangleVariationDisplay
