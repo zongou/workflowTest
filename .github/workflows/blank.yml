@@ -23,7 +23,7 @@ jobs:
         # chage extra key layout
         rep "\\[\\['ESC','\\/',{key: '-', popup: '|'},'HOME','UP','END','PGUP'\\], \\['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN'\\]\\]" \
                 "\\[\\[\
-                {macro: 'ESC', display: 'esc', popup: {macro: 'ESC :q ENTER', display: 'quit'}}\
+                {key: 'ESC', popup: {macro: 'ESC :q ENTER', display: 'quit'}}\
                 , {key: '~',popup: '\\\`'}\
                 , {key: '\\\\\\\\\\/', popup: '?'}\
                 , {key: ':', popup: ';'}\
@@ -32,9 +32,9 @@ jobs:
                 , {key: 'UP', popup: 'PGUP'}\
                 , {key: 'BACKSLASH', popup: '|'}]\
                 ,[\
-                {macro: 'CTRL', display: 'ctrl', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}\
-                , {macro: 'TAB', display: 'tab', popup: {macro: 'ESC :w ENTER', display: 'save'}}\
-                , {macro: 'ALT', display: 'alt', popup: '*'}\
+                {key: 'CTRL', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}\
+                , {key: 'TAB', popup: {macro: 'ESC :w ENTER', display: 'save'}}\
+                , {key: 'ALT', popup: '*'}\
                 , {key: 'KEYBOARD', popup: {macro: 'CTRL d', display: 'exit'}}\
                 , {key: '-', popup: '_'}\
                 , {key: 'LEFT', popup: 'HOME'}\
