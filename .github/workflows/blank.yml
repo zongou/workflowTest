@@ -22,8 +22,8 @@ jobs:
         
         # chage extra key layout
         rep "\\[\\['ESC','\\/',{key: '-', popup: '|'},'HOME','UP','END','PGUP'\\], \\['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN'\\]\\]" \
-                "\\[\\[{key: 'CTRL', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}, {key: 'ALT', popup: '*'}, {key: '~',popup: '\\\`'}, {key: '\\\\\\\\\\/', popup: '?'}, {key: 'KEYBOARD', popup: {macro: 'CTRL d', display: 'exit'}}, {key: '=', popup: '+'}, {key: 'UP', popup: 'PGUP'}, {key: 'BACKSLASH', popup: '|'}]\
-                ,[{key: 'ESC', popup: {macro: 'ESC :q ENTER', display: 'quit'}}, {key: 'TAB', popup: {macro: 'ESC :w ENTER', display: 'save'}}, {key: '-', popup: '_'}, {key: ':', popup: ';'}, {key: '!', popup: {macro: 'ESC :!', display: '!cmd'}}, {key: 'LEFT', popup: 'HOME'}, {key: 'DOWN', popup: 'PGDN'}, {key: 'RIGHT', popup: 'END'}\\]\\]" \
+                "\\[\\[{key: 'ESC', popup: {macro: 'ESC :q ENTER', display: 'quit'}}, {key: '~',popup: '\\\`'}, {key: '\\\\\\\\\\/', popup: '?'}, {key: 'ALT', popup: '*'}, {key: 'KEYBOARD', popup: {macro: 'CTRL d', display: 'exit'}}, {key: '-', popup: '_'}, {key: 'UP', popup: 'PGUP'}, {key: 'BACKSLASH', popup: '|'}]\
+                ,[{key: 'CTRL', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}, {key: 'TAB', popup: {macro: 'ESC :w ENTER', display: 'save'}}, {key: ':', popup: ';'}, {key: '!', popup: {macro: 'ESC :!', display: '!cmd'}}, {key: '=', popup: '+'}, {key: 'LEFT', popup: 'HOME'}, {key: 'DOWN', popup: 'PGDN'}, {key: 'RIGHT', popup: 'END'}\\]\\]" \
         termux-shared/src/main/java/com/termux/shared/settings/properties/TermuxPropertyConstants.java
         
         # use lessKnownCharacterDisplay and arrowTriangleVariationDisplay
