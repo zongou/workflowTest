@@ -24,7 +24,8 @@ jobs:
         
         # chage extra key layout
         rep "\\[\\['ESC','\\/',{key: '-', popup: '|'},'HOME','UP','END','PGUP'\\], \\['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN'\\]\\]" \
-        "\\[\\[{key: '~',popup: '\\\`'}, {key: '\\\\\\\\\\/', popup: '?'}, {key: ':', popup: ';'}, {key: '!', popup: {macro: 'ESC :!', display: '!cmd'}}, {key: '-', popup: '_'}, {key: '=', popup: '+'}, {key: 'UP', popup: 'PGUP'}, {key: 'KEYBOARD', popup: {macro: 'exit ENTER', display: 'exit'}}],[{key: 'ESC', popup: {macro: 'ESC :q ENTER', display: 'quit'}}, {key: 'TAB', popup: {macro: 'ESC :w ENTER', display: 'save'}}, {key: 'CTRL', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}, {key: 'ALT', popup: '*'}, {key: 'BACKSLASH', popup: '|'}, {key: 'LEFT', popup: 'HOME'}, {key: 'DOWN', popup: 'PGDN'}, {key: 'RIGHT', popup: 'END'}\\]\\]" \
+                "\\[\\[{key: 'ESC', popup: {macro: 'ESC :exit ENTER', display: 'quit'}}, {key: '~',popup: '\\\`'}, {key: '\\\\\\\\\\/', popup: '?'}, {key: 'ALT', popup: '*'}, {key: 'KEYBOARD', popup: {macro: 'CTRL d', display: 'exit'}}, {key: '=', popup: '+'}, {key: 'UP', popup: 'PGUP'}, {key: 'BACKSLASH', popup: '|'}]\
+                ,[{key: 'CTRL', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}, {key: 'TAB', popup: {macro: 'ESC :w ENTER', display: 'save'}}, {key: '-', popup: '_'}, {key: ':', popup: ';'}, {key: '!', popup: {macro: 'ESC :!', display: '!cmd'}}, {key: 'LEFT', popup: 'HOME'}, {key: 'DOWN', popup: 'PGDN'}, {key: 'RIGHT', popup: 'END'}\\]\\]" \
         termux-shared/src/main/java/com/termux/shared/settings/properties/TermuxPropertyConstants.java
         
         # use lessKnownCharacterDisplay and arrowTriangleVariationDisplay
@@ -39,11 +40,11 @@ jobs:
         # addLine(){
         #     sed -i "162a$1" app/build.gradle
         # }
-        # addLine 'downloadBootstrap("aarch64", "76190038d84bfd09a31b1594f0f31d295a1f734e8dbdd9eb4ad39d2b0ae5ef31", version)'
-        # addLine 'downloadBootstrap("arm",     "9e80493b475c16e9ae9f61560cef18ace3e1a1fd682558d31a4f12247b13a16b", version)'
-        # addLine 'downloadBootstrap("i686",    "8f090cd39093006797819fe01b4845227f7c513efe850c429eea964491c6d6b8", version)'
-        # addLine 'downloadBootstrap("x86_64",  "f5344aa326b8a1e5da67f1a1bdc078cb01fae066308a103cac8a0e9b8534ac9d", version)'
-        # addLine 'def version = "2022.03.20-r1"'
+        # addLine 'downloadBootstrap("aarch64", "e3c60a3ee26f27ae3e2786f22ba352b91748e370db45a317f4f4f8ad313e9f69", version)'
+        # addLine 'downloadBootstrap("arm",     "1f87dfdb7941cc45f6bf5ff90ce2d2b0aac1cb5d18e88a2b4ce1e3b7a867ec66", version)'
+        # addLine 'downloadBootstrap("i686",    "7f34d48ac4edf0bcf8ee12dd06bc353485625090890eda37164babebeecc13a8", version)'
+        # addLine 'downloadBootstrap("x86_64",  "e49a26fe60f927b0740d9f5eace99869abbc80f1c5cf643e85b59684989aa861", version)'
+        # addLine 'def version = "2022.04.17-r1"'
 
     - name: Build
       run: |
