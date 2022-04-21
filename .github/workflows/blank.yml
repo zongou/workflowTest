@@ -31,8 +31,8 @@ jobs:
                 , {key: 'UP', popup: 'PGUP'}\
                 , {key: 'BACKSLASH', popup: '|'}\
                 ],[\
-                {key: 'CTRL', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}\
-                , {key: 'TAB', popup: {macro: 'ESC :w ENTER', display: 'save'}}\
+                {key: 'CTRL', popup: {macro: 'ESC :w ENTER', display: 'save'}}\
+                , {key: 'TAB', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}\
                 , {key: ':', popup: ';'}\
                 , {key: '-', popup: '_'}\
                 , {key: 'LEFT', popup: 'HOME'}\
