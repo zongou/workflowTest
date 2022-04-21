@@ -27,8 +27,8 @@ jobs:
                 , {key: '~',popup: '\\\`'}\
                 , {key: '\\\\\\\\\\/', popup: '^'}\
                 , {key: 'KEYBOARD', popup: {macro: 'CTRL d', display: 'exit'}}\
-                , {key: 'UP', popup: 'PGUP'}\
                 , {key: '=', popup: '+'}\
+                , {key: 'UP', popup: 'PGUP'}\
                 , {key: 'BACKSLASH', popup: '|'}\
                 ],[\
                 {key: 'CTRL', popup: {macro: 'ESC F5 ENTER', display: 'RUN'}}\
