@@ -72,7 +72,7 @@ jobs:
         for var in $(ls)
         do
           if [ ${var##*.} == "apk" ];then
-             mv -f "$var" $(echo "$var"|sed 's/app/termux-app/' |sed 's/-debug/'_${remote_version}/)
+             mv -f "$var" $(echo "$var"|sed 's/app/termux-app/' |sed 's/_debug/'-v${remote_version}/)
           fi
         done
         
